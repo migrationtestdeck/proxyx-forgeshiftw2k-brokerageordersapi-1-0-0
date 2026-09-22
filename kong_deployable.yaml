@@ -1,0 +1,382 @@
+_format_version: '3.0'
+_transform: true
+services:
+- name: brokerageordersapi-1-0-0
+  protocol: https
+  host: httpbin.org
+  port: 443
+  path: /anything/aldermoor/brokerage
+  connect_timeout: 60000
+  read_timeout: 60000
+  write_timeout: 60000
+  retries: 5
+  enabled: true
+  tags:
+  - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+  - migrated-by:forgeshift-wso2-migrator
+  - trading
+  - wealth
+  - brokerage
+  - equities
+  - proxyx-proxy-id:PX-6BE730427018
+  routes:
+  - name: brokerageordersapi-1-0-0--getinstruments-search
+    protocols:
+    - https
+    methods:
+    - GET
+    - OPTIONS
+    paths:
+    - /wealth/brokerage/1.0.0/instruments/search
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_instruments_search
+    - wso2-verb:GET
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: rate-limiting
+      config:
+        minute: 10000
+        policy: local
+        fault_tolerant: true
+        hide_client_headers: false
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - wso2-tier:10KPerMin
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/instruments/search
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  - name: brokerageordersapi-1-0-0--getorders
+    protocols:
+    - https
+    methods:
+    - GET
+    - OPTIONS
+    paths:
+    - /wealth/brokerage/1.0.0/orders
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_orders
+    - wso2-verb:GET
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/orders
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  - name: brokerageordersapi-1-0-0--postorders
+    protocols:
+    - https
+    methods:
+    - POST
+    - OPTIONS
+    paths:
+    - /wealth/brokerage/1.0.0/orders
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_orders
+    - wso2-verb:POST
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/orders
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  - name: brokerageordersapi-1-0-0--getorders-orderid
+    protocols:
+    - https
+    methods:
+    - GET
+    - OPTIONS
+    paths:
+    - ~/wealth/brokerage/1\.0\.0/orders/(?<orderId>[^/]+)$
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_orders_{orderId}
+    - wso2-verb:GET
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/orders/$(uri_captures.orderId)
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  - name: brokerageordersapi-1-0-0--deleteorders-orderid
+    protocols:
+    - https
+    methods:
+    - DELETE
+    - OPTIONS
+    paths:
+    - ~/wealth/brokerage/1\.0\.0/orders/(?<orderId>[^/]+)$
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_orders_{orderId}
+    - wso2-verb:DELETE
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/orders/$(uri_captures.orderId)
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  - name: brokerageordersapi-1-0-0--getpositions
+    protocols:
+    - https
+    methods:
+    - GET
+    - OPTIONS
+    paths:
+    - /wealth/brokerage/1.0.0/positions
+    strip_path: false
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-resource:_positions
+    - wso2-verb:GET
+    - proxyx-proxy-id:PX-6BE730427018
+    plugins:
+    - name: request-transformer
+      config:
+        replace:
+          uri: /anything/aldermoor/brokerage/positions
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+    - name: acl
+      config:
+        allow:
+        - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+        hide_groups_header: true
+      enabled: true
+      tags:
+      - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+      - migrated-by:forgeshift-wso2-migrator
+      - trading
+      - wealth
+      - brokerage
+      - equities
+      - proxyx-proxy-id:PX-6BE730427018
+  plugins:
+  - name: rate-limiting
+    config:
+      minute: 5000
+      policy: local
+      fault_tolerant: true
+      hide_client_headers: false
+    enabled: true
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:Gold
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: jwt
+    config:
+      key_claim_name: azp
+      claims_to_verify:
+      - exp
+    enabled: true
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: cors
+    config:
+      origins:
+      - https://online.aldermoor.example
+      - https://www.aldermoor.example
+      - https://nexus.aldermoor.example
+      methods:
+      - GET
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+      - OPTIONS
+      headers:
+      - authorization
+      - Content-Type
+      - x-idempotency-key
+      - x-correlation-id
+      - x-step-up-token
+      exposed_headers:
+      - '*'
+      credentials: true
+    enabled: true
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - proxyx-proxy-id:PX-6BE730427018
