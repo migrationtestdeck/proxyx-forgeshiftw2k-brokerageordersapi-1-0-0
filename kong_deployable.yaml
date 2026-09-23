@@ -1,5 +1,9 @@
 _format_version: '3.0'
 _transform: true
+_info:
+  default_lookup_tags:
+    consumers:
+    - migrated-by:forgeshift-wso2-migrator
 services:
 - name: brokerageordersapi-1-0-0
   protocol: https
@@ -319,22 +323,6 @@ services:
       - equities
       - proxyx-proxy-id:PX-6BE730427018
   plugins:
-  - name: rate-limiting
-    config:
-      minute: 5000
-      policy: local
-      fault_tolerant: true
-      hide_client_headers: false
-    enabled: true
-    tags:
-    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
-    - migrated-by:forgeshift-wso2-migrator
-    - trading
-    - wealth
-    - brokerage
-    - equities
-    - wso2-tier:Gold
-    - proxyx-proxy-id:PX-6BE730427018
   - name: jwt
     config:
       key_claim_name: azp
@@ -379,4 +367,89 @@ services:
     - wealth
     - brokerage
     - equities
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: rate-limiting
+    config:
+      minute: 100000
+      policy: local
+      fault_tolerant: true
+    enabled: true
+    consumer: wealth-advisor-workbench
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:AldermoorInternal
+    - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: rate-limiting
+    config:
+      minute: 20000
+      policy: local
+      fault_tolerant: true
+    enabled: true
+    consumer: aldermoor-mobile-ios
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:RetailPremium
+    - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: rate-limiting
+    config:
+      minute: 20000
+      policy: local
+      fault_tolerant: true
+    enabled: true
+    consumer: aldermoor-invest-app
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:RetailPremium
+    - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: rate-limiting
+    config:
+      minute: 20000
+      policy: local
+      fault_tolerant: true
+    enabled: true
+    consumer: aldermoor-mobile-android
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:RetailPremium
+    - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - proxyx-proxy-id:PX-6BE730427018
+  - name: rate-limiting
+    config:
+      minute: 100000
+      policy: local
+      fault_tolerant: true
+    enabled: true
+    consumer: api-synthetic-monitoring
+    tags:
+    - wso2-source-id:f5dfd450-4564-4723-97c5-3ea2e8da313d
+    - migrated-by:forgeshift-wso2-migrator
+    - trading
+    - wealth
+    - brokerage
+    - equities
+    - wso2-tier:AldermoorInternal
+    - wso2-api:f5dfd450-4564-4723-97c5-3ea2e8da313d
     - proxyx-proxy-id:PX-6BE730427018
